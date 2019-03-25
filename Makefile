@@ -35,9 +35,9 @@ all:	$(NAME)
 $(NAME):
 		@echo "$(GREEN)[LIB] $(BLUE)Compiling...$(NC)"
 		@make -sC lib/my
-		@make -sC solver
-		@make -sC generator
-		@make -sC tournament
+		@make -sC solver/
+		@make -sC generator/
+		@make -sC tournament/
 		@echo "$(PREFIX)$(BLUE)Compiling...$(WHITE)"
 		@$(CC) $(MAIN) $(SRC) -o $(NAME) $(CFLAGS) $(CINC) $(LDFLAGS)
 		@echo "$(PREFIX)$(BLUE)Compiled ! $(NAME)$(NC)"
