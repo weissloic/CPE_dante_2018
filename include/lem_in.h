@@ -20,6 +20,10 @@ typedef struct generator {
     int pos_y;
 } generator_t;
 
+typedef struct solver {
+    char **map;
+} solver_t;
+
 // MAIN
 
 // DISPLAY_DATA
