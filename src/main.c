@@ -8,8 +8,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "include/my.h"
-#include "include/lem_in.h"
+#include "../include/my.h"
+#include "../include/lem_in.h"
 
 static char **malloc_map(int line)
 {
@@ -70,4 +70,6 @@ int main(int ac, char **av)
         printf("%s", solver->map[i]);
         i++;
     }
+    (void)ac;
+    return (0);
 }

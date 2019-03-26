@@ -43,31 +43,21 @@ SRC	=	my_compute_square_root.c	\
 		printf.c                    \
 		my_memset.c                 \
 
-RED     = \033[0;31m
-YELLOW  = \033[1;33m
-CYAN    = \033[0;36m
-GOLD    = \033[0;33m
-GREEN   = \033[0;32m
-BLUE	= \033[0;34m
-NC	    = \033[0;0m
-
 OBJ  	= $(SRC:%.c=%.o)
 
 NAME 	= libmy.a
 
-PREFIX  = $(GREEN)"[LIB] "
+PREFIX  = "[LIB] "
 
 all:	 $(NAME)
 
 %.o: %.c
 	$(CC) -c -o $@ $^
-	echo "$(PREFIX)$(YELLOW)$^ $(GREEN)=> $(YELLOW)$@$(NC)"
+	echo "$(PREFIX)$^ => $@"
 
 $(NAME):  $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "$(PREFIX)$(RED)Delete .o$(NC)"
-	@echo "$(PREFIX)$(BLUE)Created $(NAME) !$(NC)"
-	@rm -f *.o
+	echo "$(PREFIX)Created $(NAME) !"
 
 clean:
 	rm -f *~ *# *.o
