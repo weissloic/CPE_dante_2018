@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+.DS_Store
+lem_in
+cmake-build-debug
+lib/my/libmy.a
+CMakeLists.txt
+*.o
+.idea
+*.dSYM
+test.txt
+generator/generator
+solver/solver
+tournament/tournament
+
