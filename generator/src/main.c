@@ -6,7 +6,7 @@
 */
 
 #include "../../include/my.h"
-#include "../../include/get_next_line.h"
+#include "../../include/dante.h"
 
 int main(int ac, char **av)
 {
@@ -16,14 +16,13 @@ int main(int ac, char **av)
         if (get_number(gen, av) == 84)
             return (84);
         printf("no perfect\n");
-    }
-    else if (ac == 4 && my_strcmp(av[3], "perfect") == 0) {
+    } else if (ac == 4 && my_strcmp(av[3], "perfect") == 0) {
         if (get_number(gen, av) == 84)
             return (84);
         printf("Perfect\n");
-    }
-    else
+    } else
         return (84);
+    return (0);
 }
 
 int get_number(generator_t *gen, char **av)
@@ -33,4 +32,5 @@ int get_number(generator_t *gen, char **av)
 
     if (gen->pos_x <= 0 || gen->pos_y <= 0)
         return (84);
+    return (0);
 }

@@ -16,8 +16,6 @@ NAME	=	generator
 NAME_TEST = unit_tests
 
 SRC 	= 	src/main.c\
-			src/get_next_line.c\
-			src/str_to_word_tab.c\
 
 OBJ		=	$(SRC:src/%.c=obj/%.o)
 
