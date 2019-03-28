@@ -3,6 +3,9 @@
 lem_in
 cmake-build-debug
 lib/my/libmy.a
+lib/my/obj
+solver/obj
+generator/obj
 CMakeLists.txt
 *.o
 .idea
@@ -11,4 +14,4 @@ test.txt
 generator/generator
 solver/solver
 tournament/tournament
-
+/obj

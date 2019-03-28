@@ -5,50 +5,22 @@
 ## Makefile command
 ##
 
-CC	=	gcc -g
-
-CFLAGS	=	-W -Wextra -Wall
-CINC	=   -I include/
-LDFLAGS =   -Llib/my -lmy -lm
-
-NAME	=	lem_in
-
 NAME_TEST = unit_tests
 
-SRC 	=   src/main.c\
-            src/get_next_line.c\
-			src/str_to_word_tab.c\
-
-PREFIX	=	"[MAIN] "
-
-OBJ  	= $(SRC:%.c=%.o)
-
-all:	$(NAME)
-
-%.o: src/%.c
-	$(CC) -c -o $@ $^
-	echo "$(PREFIX)$^ => $@"
-
-$(NAME): $(OBJ)
-		@echo "[LIB] Compiling..."
-		make -sC lib/my
-		make -sC solver/
-		make -sC generator/
-		make -sC tournament/
-		@echo "$(PREFIX)Compiling..."
-		@$(CC) $(SRC) -o $(NAME) $(CFLAGS) $(CINC) $(LDFLAGS)
-		@echo "$(PREFIX)Compiled ! $(NAME)"
+all:
+	make -s -C generator/
+	make -s -C solver/
 
 clean :
-		@echo "$(PREFIX)Delete ! .~ and .# folder"
-		@rm -f *~ *# *.o
+	make clean -s -C generator/
+	make clean -s -C solver/
 
 fclean:		clean
-		@echo "$(PREFIX)Delete ! $(NAME)"
-		@rm -f $(NAME)
-		@rm -f lib/my/libmy.a
+	make fclean -s -C generator/
+	make fclean -s -C solver/
 
-re:		fclean all clean
+
+re:		fclean all
 
 test_run:
 		@echo "$[TESTS] Start tests..."
@@ -58,4 +30,5 @@ test_run:
 		@echo "$[TESTS] End tests..."
 		@rm *.g*
 
-
+create_dir:
+	@mkdir -p obj

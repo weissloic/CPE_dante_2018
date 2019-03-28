@@ -5,8 +5,6 @@
 ** strtowordtab
 */
 
-#include "../../include/lem_in.h"
-
 char *my_strncpy(char *dest, char const *src, int n)
 {
     int i = 0;

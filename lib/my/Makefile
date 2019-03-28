@@ -43,27 +43,29 @@ SRC	=	my_compute_square_root.c	\
 		printf.c                    \
 		my_memset.c                 \
 
-OBJ  	= $(SRC:%.c=%.o)
+OBJ  	= $(SRC:%.c=obj/%.o)
 
 NAME 	= libmy.a
 
 PREFIX  = "[LIB] "
 
-all:	 $(NAME)
+all:	 create_dir $(NAME)
 
-%.o: %.c
-	$(CC) -c -o $@ $^
-	echo "$(PREFIX)$^ => $@"
+obj/%.o: %.c
+	@$(CC) -c -o $@ $^
+	@echo "$(PREFIX)$^ => $@"
 
 $(NAME):  $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	echo "$(PREFIX)Created $(NAME) !"
+	@echo "$(PREFIX)Created $(NAME) !"
 
 clean:
-	rm -f *~ *# *.o
+	rm -f *~ *# obj/*.o
 
 fclean:	clean
 	rm -f $(NAME)
 
 re: fclean all clean
 
+create_dir:
+		mkdir -p obj

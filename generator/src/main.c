@@ -5,9 +5,8 @@
 ** main
 */
 
-#include "../include/lem_in.h"
-#include "../include/my.h"
-#include "../include/get_next_line.h"
+#include "../../include/my.h"
+#include "../../include/get_next_line.h"
 
 int main(int ac, char **av)
 {

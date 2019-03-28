@@ -8,53 +8,52 @@
 CC	=	gcc -g
 
 CFLAGS	=	-W -Wextra -Wall
-CINC	=   -I include/
+CINC	=   -I../include/
 LDFLAGS =   -L../lib/my -lmy -lm
 
 NAME	=	generator
 
 NAME_TEST = unit_tests
 
-MAIN	=	main.c
-
-SRC 	= 	src/get_next_line.c\
+SRC 	= 	src/main.c\
+			src/get_next_line.c\
 			src/str_to_word_tab.c\
 
-RED     = \033[0;31m
-YELLOW  = \033[1;33m
-CYAN    = \033[0;36m
-GOLD    = \033[0;33m
-GREEN   = \033[0;32m
-BLUE	= \033[0;34m
-NC	    = \033[0;0m
+OBJ		=	$(SRC:src/%.c=obj/%.o)
 
-PREFIX	=	$(CYAN)"[MAIN] "
+PREFIX	=	"[GENERATOR] "
 
-all:	$(NAME)
+all:	create_dir $(NAME)
 
-$(NAME):
-		@echo "$(GREEN)[LIB] $(BLUE)Compiling...$(NC)"
-		@echo "$(PREFIX)$(BLUE)Compiling...$(WHITE)"
-		@$(CC) $(MAIN) $(SRC) -o $(NAME) $(CFLAGS) $(CINC) $(LDFLAGS)
-		@echo "$(PREFIX)$(BLUE)Compiled ! $(NAME)$(NC)"
+obj/%.o: src/%.c
+	$(CC) -c -o $@ $^
+
+$(NAME): $(OBJ)
+		@echo "[LIB] Compiling..."
+		make -sC ../lib/my
+		@echo "$(PREFIX)Compiling..."
+		@$(CC) $(SRC) -o $(NAME) $(CFLAGS) $(CINC) $(LDFLAGS)
+		cp $(NAME) ../tournament/$(NAME)
+		@echo "$(PREFIX)Compiled ! $(NAME)"
 
 clean :
-		@echo "$(PREFIX)$(RED)Delete ! .~ and .# folder$(NC)"
+		@echo "$(PREFIX)Delete ! .~ and .# folder"
 		@rm -f *~ *#
 
 fclean:		clean
-		@echo "$(PREFIX)$(RED)Delete ! $(NAME)$(NC)"
+		@echo "$(PREFIX)Delete ! $(NAME)"
 		@rm -f $(NAME)
 		@rm -f lib/my/libmy.a
 
 re:		fclean all clean
 
 test_run:
-		@echo "$(GREEN)[TESTS] $(BLUE)Start tests...$(NC)"
+		@echo "[TESTS] Start tests..."
 		gcc tests/tests.c -o $(NAME_TEST) -L. -lmy --coverage -lcriterion
 		./unit_tests
 		@gcovr --exclude tests/
-		@echo "$(GREEN)[TESTS] $(BLUE)End tests...$(NC)"
+		@echo "[TESTS] End tests..."
 		@rm *.g*
 
-
+create_dir:
+			mkdir -p obj
