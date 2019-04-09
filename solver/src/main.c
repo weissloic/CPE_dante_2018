@@ -5,6 +5,9 @@
 ** main
 */
 
+#include "../../include/dante.h"
+#include "../../include/my.h"
+
 int main(void)
 {
     return (0);

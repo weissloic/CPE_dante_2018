@@ -31,7 +31,6 @@ $(NAME): $(OBJ)
 		make -sC ../lib/my
 		@echo "$(PREFIX)Compiling..."
 		@$(CC) $(SRC) -o $(NAME) $(CFLAGS) $(CINC) $(LDFLAGS)
-		cp $(NAME) ../tournament/$(NAME)
 		@echo "$(PREFIX)Compiled ! $(NAME)"
 
 clean :

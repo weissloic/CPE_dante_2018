@@ -16,6 +16,8 @@
 #ifndef MY_H_
 #define MY_H_
 
+#define READ_SIZE (100)
+
 // BASIC FUNCTION
 void my_putchar(char );
 int my_isneg(int );
@@ -40,6 +42,7 @@ char *my_revstr(char *);
 char *my_strstr(char *, char const *);
 int my_strcmp(char const *, char const *);
 int my_strncmp(char const *, char const * , int );
+char **my_str_to_word_array(char const *);
 // find
 char *my_strupcase(char *);
 char *my_strlowcase(char *);
@@ -83,5 +86,8 @@ void display_strbis(va_list );
 void display_percent(va_list );
 void display_unsigned(va_list );
 void error_big_s(unsigned char );
+
+//gnl
+char *get_next_line(int);
 
 #endif //MY_H_

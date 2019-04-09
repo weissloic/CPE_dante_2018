@@ -16,8 +16,6 @@ NAME	=	solver
 NAME_TEST = unit_tests
 
 SRC 	= 	src/main.c\
-			src/get_next_line.c\
-			src/str_to_word_tab.c\
 
 OBJ 	=	$(SRC:src/%.c=obj/%.o)
 
@@ -33,7 +31,6 @@ $(NAME): $(OBJ)
 		make -sC ../lib/my
 		@echo "$(PREFIX)Compiling..."
 		$(CC) $(SRC) -o $(NAME) $(CFLAGS) $(CINC) $(LDFLAGS)
-		cp $(NAME) ../tournament/$(NAME)
 		@echo "$(PREFIX)Compiled ! $(NAME)"
 
 clean :

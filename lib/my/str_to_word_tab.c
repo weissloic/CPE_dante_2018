@@ -5,6 +5,8 @@
 ** strtowordtab
 */
 
+#include "../../include/dante.h"
+
 char *my_strncpy(char *dest, char const *src, int n)
 {
     int i = 0;
@@ -19,13 +21,11 @@ char *my_strncpy(char *dest, char const *src, int n)
 
 int size_line(char const *str)
 {
-    int n = 0;
     int nb_line = 0;
 
-    while (str[n] != 0) {
-        if (str[n] == '\n')
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == '\n')
             nb_line++;
-    n++;
     }
     return (nb_line);
 }

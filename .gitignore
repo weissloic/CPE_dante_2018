@@ -13,5 +13,4 @@ CMakeLists.txt
 test.txt
 generator/generator
 solver/solver
-tournament/tournament
 /obj

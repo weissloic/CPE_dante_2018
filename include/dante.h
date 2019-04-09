@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** lemin
+** dante
 ** File description:
 ** my
 */
@@ -12,43 +12,21 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#ifndef LEM_IN_H_
-#define LEM_IN_H_
+#ifndef DANTE_H_
+#define DANTE_H_
 
-typedef struct generator {
+typedef struct s_generator {
     int pos_x;
     int pos_y;
 } generator_t;
 
-typedef struct solver {
+typedef struct s_solver {
     char **map;
 } solver_t;
 
-// MAIN
-
-// DISPLAY_DATA
-
-
-// GET_LENGTH
-
-
-// GET_ROOMS
-
-
-// NODE
-
-
-// PARSER
-
-
-// TUNNEL
-
-
-// ALGORITHM
-
-
-// ERROR
+// GENERATOR
+int get_number(generator_t *, char **);
 
 char **my_str_to_word_array(char const *);
 
-#endif /* LEM_IN_H_ */
+#endif /* DANTE_H_ */

@@ -42,6 +42,8 @@ SRC	=	my_compute_square_root.c	\
 		print_float.c				\
 		printf.c                    \
 		my_memset.c                 \
+		get_next_line.c             \
+		str_to_word_tab.c           \
 
 OBJ  	= $(SRC:%.c=obj/%.o)
 
