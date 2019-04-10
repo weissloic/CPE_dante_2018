@@ -16,6 +16,8 @@
 #define DANTE_H_
 
 typedef struct s_generator {
+    int right;
+    int top;
     int pos_x;
     int pos_y;
 } generator_t;
