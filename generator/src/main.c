@@ -142,19 +142,14 @@ void print_maze(char **maze, generator_t *gen)
     int j = 0;
 
     maze[gen->pos_x][gen->pos_y] = '*';
-    maze[gen->pos_x - 1][gen->pos_y - 1] = '*';
     maze[gen->pos_x - 2][gen->pos_y - 1] = '*';
     maze[gen->pos_x - 1][gen->pos_y - 2] = '*';
+    maze[gen->pos_y - 1][gen->pos_x - 1] = '*';
 
     while (i < gen->pos_y) {
         j = 0;
         while (j < gen->pos_x) {
-            if (maze[i][j] == '*')
-                printf("*");
-            else if (i == gen->pos_x && j == gen->pos_y)
-                printf("*");
-            else if (maze[i][j] == 'X')
-                printf("X");
+                printf("%c", maze[i][j]);
             j++;
         }
         printf("\n");
