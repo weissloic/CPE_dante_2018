@@ -30,7 +30,7 @@ int main(int ac, char **av)
     generator_t *gen = malloc(sizeof(generator_t));
 
     char **maze = NULL;
-    srand(9890 * time(NULL));
+    srand(getpid() * time(NULL));
     if (ac == 3) {
         if (get_number(gen, av) == 84)
             return (84);
@@ -41,7 +41,7 @@ int main(int ac, char **av)
         if (get_number(gen, av) == 84)
             return (84);
         maze = malloc_my_maze(gen, maze);
-        gen_no_perfect(maze, gen);
+        gen_perfect(maze, gen);
     }
     else
         return (84);
@@ -102,15 +102,24 @@ void gen_no_perfect(char **maze, generator_t *gen)
     print_maze(maze, gen);
 }
 
+void gen_perfect(char **maze, generator_t *gen)
+{
+    gen->top = 0;
+    gen->right = 0;
+    maze = create_maze(maze, gen);
+    transform_array(gen, maze);
+    print_maze(maze, gen);
+}
+
 void create_lab(char **maze, int i, int j, generator_t *gen)
 {
     int value = rand() % 2;
     if (i - 1 >= 0 && maze[i - 1][j] == 'X')
         gen->top = 1;
-    /*if (j - 1 >= 0 && maze[i][j - 1] == 'X')
-        gen->right = 1;*/
-    /*if (i - 1 >= 0 && gen->top == 1 && gen->right == 0)
-        maze[i - 1][j] = '*';*/
+    if (j - 1 >= 0 && maze[i][j - 1] == 'X')
+        gen->right = 1;
+    if (i - 1 >= 0 && gen->top == 1 && gen->right == 0)
+        maze[i - 1][j] = '*';
     if (j - 1 >= 0 && gen->top == 0)
         maze[i][j - 1] = '*';
     if (j - 1 >= 0 && value == 0)
@@ -141,20 +150,11 @@ void print_maze(char **maze, generator_t *gen)
     int i = 0;
     int j = 0;
 
-    //maze[gen->pos_x][gen->pos_y] = '*';
-    //maze[gen->pos_x - 2][gen->pos_y - 1] = '*';
-    //maze[gen->pos_x - 1][gen->pos_y - 2] = '*';
     maze[gen->pos_y - 1][gen->pos_x - 1] = '*';
-    maze[gen->pos_y - 1][gen->pos_x - 2] = '*';
-    maze[gen->pos_y - 2][gen->pos_x - 1] = '*';
+
 
     while (i < gen->pos_y) {
-        j = 0;
-        while (j < gen->pos_x) {
-                printf("%c", maze[i][j]);
-            j++;
-        }
-        printf("\n");
-        i++;
+        write(1, maze[i++], gen->pos_x);
+        write(1, "\n", 1);
     }
 }
