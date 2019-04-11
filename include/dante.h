@@ -10,13 +10,15 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <string.h>
 #include <unistd.h>
 
 #ifndef DANTE_H_
 #define DANTE_H_
 
-#define START_POINT (solver->map[0][0])
-#define END_POINT (solver->map[solver->height][solver->width])
+#define START_POINT (solver->int_maze[0][0])
+#define END_POINT (solver->int_maze[solver->height - 1][solver->width - 1])
+#define END_LINE (-3)
 
 typedef struct s_generator {
     int right;
@@ -26,7 +28,8 @@ typedef struct s_generator {
 } generator_t;
 
 typedef struct s_solver {
-    char **map;
+    char **maze;
+    int **int_maze;
     int height;
     int width;
 } solver_t;
@@ -54,5 +57,12 @@ void find_size_maze(solver_t *);
 // STOCK_MAP
 char *get_buffer(char *);
 char **get_map(char *);
+
+// TRANSFORM_MAZE
+void stock_maze(solver_t *);
+int transform_maze(solver_t *);
+
+// PRINT_MAZE
+void read_maze_transform(solver_t *);
 
 #endif /* DANTE_H_ */

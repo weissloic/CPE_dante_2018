@@ -18,6 +18,8 @@ NAME_TEST = unit_tests
 SRC 	= 	src/main.c\
 			src/stock_map.c\
 			src/solver.c\
+			src/transform_maze.c\
+			src/print_maze.c\
 
 OBJ 	=	$(SRC:src/%.c=obj/%.o)
 

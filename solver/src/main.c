@@ -17,14 +17,15 @@ int main(int ac, char **av)
         my_printf("Bad Argument !\n");
         return (84);
     }
-    solver->map = get_map(av[1]);
-    if (solver->map == NULL)
+    solver->maze = get_map(av[1]);
+    if (solver->maze == NULL)
         return (84);
 
-    while (solver->map[++i] != NULL)
-        printf("%s\n", solver->map[i]);
     my_solver(solver);
-    while (solver->map[++i] != NULL)
-        printf("%s\n", solver->map[i]);
+    i = -1;
+    while (solver->maze[++i] != NULL) {
+        write(1, solver->maze[i], solver->width);
+        write(1, "\n", 1);
+    }
     return (0);
 }
