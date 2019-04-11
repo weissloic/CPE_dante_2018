@@ -107,11 +107,11 @@ void create_lab(char **maze, int i, int j, generator_t *gen)
     int value = rand() % 2;
     if (i - 1 >= 0 && maze[i - 1][j] == 'X')
         gen->top = 1;
-    if (j - 1 >= 0 && maze[i][j - 1] == 'X')
-        gen->right = 1;
-    if (i - 1 >= 0 && gen->top == 1 && gen->right == 0)
-        maze[i - 1][j] = '*';
-    if (j - 1 >= 0 && gen->top == 0 && gen->right == 1)
+    /*if (j - 1 >= 0 && maze[i][j - 1] == 'X')
+        gen->right = 1;*/
+    /*if (i - 1 >= 0 && gen->top == 1 && gen->right == 0)
+        maze[i - 1][j] = '*';*/
+    if (j - 1 >= 0 && gen->top == 0)
         maze[i][j - 1] = '*';
     if (j - 1 >= 0 && value == 0)
         maze[i][j - 1] = '*';
@@ -145,6 +145,8 @@ void print_maze(char **maze, generator_t *gen)
     //maze[gen->pos_x - 2][gen->pos_y - 1] = '*';
     //maze[gen->pos_x - 1][gen->pos_y - 2] = '*';
     maze[gen->pos_y - 1][gen->pos_x - 1] = '*';
+    maze[gen->pos_y - 1][gen->pos_x - 2] = '*';
+    maze[gen->pos_y - 2][gen->pos_x - 1] = '*';
 
     while (i < gen->pos_y) {
         j = 0;
