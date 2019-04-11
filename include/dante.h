@@ -15,6 +15,9 @@
 #ifndef DANTE_H_
 #define DANTE_H_
 
+#define START_POINT (solver->map[0][0])
+#define END_POINT (solver->map[solver->height][solver->width])
+
 typedef struct s_generator {
     int right;
     int top;
@@ -24,11 +27,32 @@ typedef struct s_generator {
 
 typedef struct s_solver {
     char **map;
+    int height;
+    int width;
 } solver_t;
 
-// GENERATOR
+/*----------------- GENERATOR ----------------------*/
+// MAIN
+void print_maze(char **, generator_t *);
+void transform_array(generator_t *, char **);
+void create_lab(char **, int, int, generator_t *);
+void gen_no_perfect(char **, generator_t *);
+void hit_perfect(char **, generator_t *);
+char **create_maze(char **, generator_t *);
 int get_number(generator_t *, char **);
+char **malloc_my_maze(generator_t *, char **);
 
-char **my_str_to_word_array(char const *);
+
+/*----------------- SOLVER ----------------------*/
+// MAIN
+
+// SOLVER
+void my_solver(solver_t *);
+int	resolve(solver_t *, int, int);
+void find_size_maze(solver_t *);
+
+// STOCK_MAP
+char *get_buffer(char *);
+char **get_map(char *);
 
 #endif /* DANTE_H_ */

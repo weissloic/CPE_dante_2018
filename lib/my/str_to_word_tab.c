@@ -27,7 +27,7 @@ int size_line(char const *str)
         if (str[i] == '\n')
             nb_line++;
     }
-    return (nb_line);
+    return (nb_line + 1);
 }
 
 int condition(char c)
@@ -39,7 +39,7 @@ int condition(char c)
 
 char **my_str_to_word_array(char const *buffer)
 {
-    char **word_array;
+    char **word_array = NULL;
     int n = 0;
     int x = 0;
     int y = 0;

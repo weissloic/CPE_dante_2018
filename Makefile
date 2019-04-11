@@ -17,6 +17,7 @@ clean :
 
 fclean:		clean
 	make fclean -s -C generator/
+	make re -s -C lib/my/
 	make fclean -s -C solver/
 
 

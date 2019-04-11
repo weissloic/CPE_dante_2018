@@ -16,6 +16,8 @@ NAME	=	solver
 NAME_TEST = unit_tests
 
 SRC 	= 	src/main.c\
+			src/stock_map.c\
+			src/solver.c\
 
 OBJ 	=	$(SRC:src/%.c=obj/%.o)
 
@@ -27,7 +29,7 @@ obj/%.o: src/%.c
 	$(CC) -c -o $@ $^
 
 $(NAME): $(OBJ)
-		@echo "[LIB] $(BLUE)Compiling..."
+		@echo "[LIB] Compiling..."
 		make -sC ../lib/my
 		@echo "$(PREFIX)Compiling..."
 		$(CC) $(SRC) -o $(NAME) $(CFLAGS) $(CINC) $(LDFLAGS)
