@@ -10,12 +10,12 @@
 
 char **malloc_my_maze(generator_t *gen, char **maze)
 {
-    maze = malloc(sizeof(char *) * (gen->pos_y));
+    maze = malloc(sizeof(char *) * (gen->pos_y + 2));
     if (maze == NULL)
         return (84);
     int i = 0;
     for (i = 0; i <= gen->pos_y; i++)
-        maze[i] = malloc(sizeof(char) * (gen->pos_x));
+        maze[i] = malloc(sizeof(char) * (gen->pos_x + 1));
 
     if (maze[0] == NULL)
         return (84);
@@ -30,7 +30,7 @@ int main(int ac, char **av)
     generator_t *gen = malloc(sizeof(generator_t));
 
     char **maze = NULL;
-    srand(1390 * time(NULL));
+    srand(9890 * time(NULL));
     if (ac == 3) {
         if (get_number(gen, av) == 84)
             return (84);
@@ -87,8 +87,8 @@ void hit_perfect(char **maze, generator_t *gen)
     for (i; i < number; i++) {
         y = rand() % gen->pos_x;
         x = rand() % gen->pos_y;
-        if (maze[y][x] == 'X')
-            maze[y][x] = '*';
+        if (maze[x][y] == 'X')
+            maze[x][y] = '*';
     }
 }
 
@@ -141,9 +141,9 @@ void print_maze(char **maze, generator_t *gen)
     int i = 0;
     int j = 0;
 
-    maze[gen->pos_x][gen->pos_y] = '*';
-    maze[gen->pos_x - 2][gen->pos_y - 1] = '*';
-    maze[gen->pos_x - 1][gen->pos_y - 2] = '*';
+    //maze[gen->pos_x][gen->pos_y] = '*';
+    //maze[gen->pos_x - 2][gen->pos_y - 1] = '*';
+    //maze[gen->pos_x - 1][gen->pos_y - 2] = '*';
     maze[gen->pos_y - 1][gen->pos_x - 1] = '*';
 
     while (i < gen->pos_y) {
