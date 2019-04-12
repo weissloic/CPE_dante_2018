@@ -39,6 +39,7 @@ clean :
 
 fclean:		clean
 		@echo "$(PREFIX)Delete ! $(NAME)"
+		make -sC ../lib/my
 		@rm -f $(NAME)
 		@rm -f lib/my/libmy.a
 

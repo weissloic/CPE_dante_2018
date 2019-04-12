@@ -18,7 +18,8 @@
 
 #define START_POINT (solver->int_maze[0][0])
 #define END_POINT (solver->int_maze[solver->height - 1][solver->width - 1])
-#define END_LINE (-3)
+#define LAST_POINT (solver->maze[solver->height - 1][solver->width - 1])
+#define END_LINE (-5)
 
 typedef struct s_generator {
     int right;
@@ -28,8 +29,8 @@ typedef struct s_generator {
 } generator_t;
 
 typedef struct s_solver {
-    char **maze;
     int **int_maze;
+    char **maze;
     int height;
     int width;
 } solver_t;
@@ -64,5 +65,9 @@ int transform_maze(solver_t *);
 
 // PRINT_MAZE
 void read_maze_transform(solver_t *);
+
+// UTILS
+int find_height_maze(char **);
+int find_width_maze(char **);
 
 #endif /* DANTE_H_ */
