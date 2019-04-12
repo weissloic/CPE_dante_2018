@@ -25,58 +25,6 @@ char **malloc_my_maze(generator_t *gen, char **maze)
     return (maze);
 }
 
-int main(int ac, char **av)
-{
-    generator_t *gen = malloc(sizeof(generator_t));
-
-    char **maze = NULL;
-    srand(getpid() * time(NULL));
-    if (ac == 3) {
-        if (get_number(gen, av) == 84)
-            return (84);
-        maze = malloc_my_maze(gen, maze);
-        gen_no_perfect(maze, gen);
-    }
-    else if (ac == 4 && my_strcmp(av[3], "perfect") == 0) {
-        if (get_number(gen, av) == 84)
-            return (84);
-        maze = malloc_my_maze(gen, maze);
-        gen_perfect(maze, gen);
-    }
-    else
-        return (84);
-}
-
-int get_number(generator_t *gen, char **av)
-{
-    gen->pos_x = atoi(av[1]);
-    gen->pos_y = atoi(av[2]);
-
-    if (gen->pos_x <= 0 || gen->pos_y <= 0)
-        return (84);
-}
-
-char **create_maze(char **maze, generator_t *gen)
-{
-    int i = 0;
-    int j = 0;
-
-    while (i  < gen->pos_y) {
-        j = 0;
-        while (j < gen->pos_x) {
-            if (j % 2 == 0 && i % 2 == 0)
-                maze[i][j] = '*';
-            else if (j % 2 != 0 && i % 2 == 0)
-                maze[i][j] = 'X';
-            else if (i % 2 != 0)
-                maze[i][j] = 'X';
-            j++;
-        }
-        i++;
-    }
-    return (maze);
-}
-
 void hit_perfect(char **maze, generator_t *gen)
 {
     int i = 0;
@@ -153,8 +101,61 @@ void print_maze(char **maze, generator_t *gen)
     maze[gen->pos_y - 1][gen->pos_x - 1] = '*';
 
 
-    while (i < gen->pos_y) {
+    while (i < gen->pos_y - 1) {
         write(1, maze[i++], gen->pos_x);
         write(1, "\n", 1);
     }
+    write(1, maze[i], gen->pos_x);
+}
+
+int main(int ac, char **av)
+{
+    generator_t *gen = malloc(sizeof(generator_t));
+
+    char **maze = NULL;
+    srand(getpid() * time(NULL));
+    if (ac == 3) {
+        if (get_number(gen, av) == 84)
+            return (84);
+        maze = malloc_my_maze(gen, maze);
+        gen_no_perfect(maze, gen);
+    }
+    else if (ac == 4 && my_strcmp(av[3], "perfect") == 0) {
+        if (get_number(gen, av) == 84)
+            return (84);
+        maze = malloc_my_maze(gen, maze);
+        gen_perfect(maze, gen);
+    }
+    else
+        return (84);
+}
+
+int get_number(generator_t *gen, char **av)
+{
+    gen->pos_x = atoi(av[1]);
+    gen->pos_y = atoi(av[2]);
+
+    if (gen->pos_x <= 0 || gen->pos_y <= 0)
+        return (84);
+}
+
+char **create_maze(char **maze, generator_t *gen)
+{
+    int i = 0;
+    int j = 0;
+
+    while (i  < gen->pos_y) {
+        j = 0;
+        while (j < gen->pos_x) {
+            if (j % 2 == 0 && i % 2 == 0)
+                maze[i][j] = '*';
+            else if (j % 2 != 0 && i % 2 == 0)
+                maze[i][j] = 'X';
+            else if (i % 2 != 0)
+                maze[i][j] = 'X';
+            j++;
+        }
+        i++;
+    }
+    return (maze);
 }
