@@ -20,6 +20,7 @@ SRC 	= 	src/main.c\
 			src/solver.c\
 			src/transform_maze.c\
 			src/print_maze.c\
+			src/utils.c\
 
 OBJ 	=	$(SRC:src/%.c=obj/%.o)
 
