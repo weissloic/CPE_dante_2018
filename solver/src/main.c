@@ -11,7 +11,7 @@
 int main(int ac, char **av)
 {
     solver_t *solver = malloc(sizeof(solver_t));
-    int i = -1;
+    int i = 0;
 
     if (ac != 2) {
         my_printf("Bad Argument !\n");
@@ -22,10 +22,10 @@ int main(int ac, char **av)
         return (84);
 
     my_solver(solver);
-    i = -1;
-    while (solver->maze[++i] != NULL) {
-        write(1, solver->maze[i], solver->width);
+    while (i != solver->height - 1) {
+        write(1, solver->maze[i++], solver->width);
         write(1, "\n", 1);
     }
+    write(1, solver->maze[i], solver->width);
     return (0);
 }
