@@ -37,14 +37,19 @@ typedef struct s_solver {
 
 /*----------------- GENERATOR ----------------------*/
 // MAIN
-void print_maze(char **, generator_t *);
-void transform_array(generator_t *, char **);
-void create_lab(char **, int, int, generator_t *);
-void gen_no_perfect(char **, generator_t *);
-void hit_perfect(char **, generator_t *);
-char **create_maze(char **, generator_t *);
-int get_number(generator_t *, char **);
 char **malloc_my_maze(generator_t *, char **);
+void hit_perfect(char **, generator_t *);
+
+// PERFECT
+int get_number(generator_t *, char **);
+char **create_maze(char **, generator_t *);
+void fill_maze(char **, int, int);
+
+//ALGORITHM
+void gen_no_perfect(char **, generator_t *);
+void gen_perfect(char **, generator_t *);
+void transform_array(generator_t *, char **);
+void print_maze(char **, generator_t *);
 
 
 /*----------------- SOLVER ----------------------*/
