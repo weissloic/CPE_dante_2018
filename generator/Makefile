@@ -16,6 +16,8 @@ NAME	=	generator
 NAME_TEST = unit_tests
 
 SRC 	= 	src/main.c\
+			src/algorithm.c\
+			src/perfect.c\
 
 OBJ		=	$(SRC:src/%.c=obj/%.o)
 
