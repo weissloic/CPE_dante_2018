@@ -26,6 +26,7 @@ void gen_perfect(char **maze, generator_t *gen)
 void create_lab(char **maze, int i, int j, generator_t *gen)
 {
     int value = rand() % 2;
+
     if (i - 1 >= 0 && maze[i - 1][j] == 'X')
         gen->top = 1;
     if (j - 1 >= 0 && maze[i][j - 1] == 'X')
@@ -45,11 +46,11 @@ void transform_array(generator_t *gen, char **maze)
     int i = 0;
     int j = 0;
 
-    for (i; i <= gen->pos_y; i += 2) {
+    for (; i <= gen->pos_y; i += 2) {
         j = 0;
         gen->top = 0;
         gen->right = 0;
-        for (j; j < gen->pos_x; j += 2) {
+        for (; j < gen->pos_x; j += 2) {
             if (i == 0)
                 maze[i][j] = '*';
             create_lab(maze, i, j, gen);
@@ -60,8 +61,8 @@ void transform_array(generator_t *gen, char **maze)
 void print_maze(char **maze, generator_t *gen)
 {
     int i = 0;
-    maze[gen->pos_y - 1][gen->pos_x - 1] = '*';
 
+    maze[gen->pos_y - 1][gen->pos_x - 1] = '*';
     while (i < gen->pos_y - 1) {
         write(1, maze[i++], gen->pos_x);
         write(1, "\n", 1);

@@ -16,6 +16,7 @@ int get_number(generator_t *gen, char **av)
 
     if (gen->pos_x <= 0 || gen->pos_y <= 0)
         return (84);
+    return (0);
 }
 
 char **create_maze(char **maze, generator_t *gen)

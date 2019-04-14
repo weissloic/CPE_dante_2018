@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 #ifndef DANTE_H_
 #define DANTE_H_
