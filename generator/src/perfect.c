@@ -23,7 +23,7 @@ char **create_maze(char **maze, generator_t *gen)
     int i = 0;
     int j = 0;
 
-    while (i  < gen->pos_y) {
+    while (i < gen->pos_y) {
         j = 0;
         while (j < gen->pos_x) {
             fill_maze(maze, i, j);
