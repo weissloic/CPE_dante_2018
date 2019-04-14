@@ -26,12 +26,11 @@ char **malloc_my_maze(generator_t *gen, char **maze)
 
 void hit_perfect(char **maze, generator_t *gen)
 {
-    int i = 0;
     int y = 0;
     int x = 0;
     int number = (gen->pos_x * gen->pos_y) / 2;
 
-    for (; i < number; i++) {
+    for (int i = 0; i < number; i++) {
         y = rand() % gen->pos_x;
         x = rand() % gen->pos_y;
         maze[x][y] = '*';

@@ -24,13 +24,10 @@ char **create_maze(char **maze, generator_t *gen)
     int i = 0;
     int j = 0;
 
-    while (i < gen->pos_y) {
-        j = 0;
-        while (j < gen->pos_x) {
+    for (int i = 0; i < gen->pos_y; i++) {
+        for (int j = 0; j < gen->pos_x; j++) {
             fill_maze(maze, i, j);
-            j++;
         }
-        i++;
     }
     return (maze);
 }

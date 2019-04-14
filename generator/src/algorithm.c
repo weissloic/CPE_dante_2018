@@ -47,10 +47,9 @@ void transform_array(generator_t *gen, char **maze)
     int j = 0;
 
     for (; i <= gen->pos_y; i += 2) {
-        j = 0;
         gen->top = 0;
         gen->right = 0;
-        for (; j < gen->pos_x; j += 2) {
+        for (j = 0; j < gen->pos_x; j += 2) {
             if (i == 0)
                 maze[i][j] = '*';
             create_lab(maze, i, j, gen);
